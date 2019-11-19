@@ -8,7 +8,6 @@ class Player(pg.sprite.Sprite):
         pg.sprite.Sprite.__init__(self, self.groups)
         self.game = game
         self.jumping = False
-        self.walking = False
         self.abaixar = False
         self.air = False
         self.current_frame = 0
@@ -84,11 +83,11 @@ class Player(pg.sprite.Sprite):
         now = pg.time.get_ticks()
 
         # parado
-        if not self.jumping and not self.walking and not self.abaixar:
+        if not self.jumping and not self.abaixar:
             self.animated_frames(now, 250, self.frame_parado)
 
         # abaixar
-        if self.abaixar and not self.jumping and not self.walking:
+        if self.abaixar and not self.jumping:
             self.animated_frames(now, 250, self.frame_abaixar)
 
         # correr_d
@@ -104,7 +103,7 @@ class Player(pg.sprite.Sprite):
             self.animated_frames(now, 50, self.frame_pular, False, 7)
             if self.current_frame == 7:
                 self.jumping = False
-                self.air = True
+
         #cair
         if self.vel.y > 5:
             self.air = True
