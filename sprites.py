@@ -66,6 +66,7 @@ class Player(pg.sprite.Sprite):
             self.frame_cair.append(frame)
 
     def animated_frames(self, now, time, list, loop=True, count = 0):
+        # para auxiliar na animacao de frames para animacao
        if now - self.last_update > time:
             self.last_update = now
             if loop:
