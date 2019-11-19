@@ -85,6 +85,14 @@ class Game:
                 if event.key == pg.K_ESCAPE:
                     self.quit()
 
+                self.player.get_press_events_down(event)
+
+            if event.type == pg.KEYUP:  # Added keyup
+                if event.key == pg.K_s:
+                    self.player.abaixar = False
+
+                self.player.get_press_events_up(event)
+
 
     def draw_grid(self):
         for x in range(0, WIDTH, TILESIZE):

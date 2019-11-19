@@ -8,7 +8,7 @@ class Spritesheet:
 
     def get_image(self, x, y, width, height, scale=1):
         # grab on image  out of a larger spritesheet
-        image = pg.Surface((width, height))
+        image = pg.Surface((width, height), pg.SRCALPHA)
         image.blit(self.spritsheet, (0, 0), (x, y, width, height))
         image = pg.transform.scale(image, (width * scale, height * scale))
         return image
